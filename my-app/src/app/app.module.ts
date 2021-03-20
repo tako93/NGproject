@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { CarsComponent } from './bmw/cars.component';
 import { UsersApiComponent } from './users-api/users-api.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -13,13 +15,28 @@ import { UsersApiComponent } from './users-api/users-api.component';
     AppComponent,
     CarsComponent,
     UsersApiComponent,
+    PageNotFoundComponent,
+    NavigationComponent,
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule,
+    RouterModule.forRoot([
+      {
+        path: 'users',
+        component: UsersApiComponent,
+      },
+        {
+        path: 'bmw',
+        component: CarsComponent,
+      },
+        {
+        path: '**',
+        component: PageNotFoundComponent,
+      }
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
