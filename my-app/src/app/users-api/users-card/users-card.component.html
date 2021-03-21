@@ -11,7 +11,7 @@
 </div> -->
 
 <div class="container-fluid">
-  <table class="table">
+  <table class="table table-danger">
     <thead>
       <tr >
         <th scope="col">IMAGE</th>
@@ -23,10 +23,12 @@
     <tbody>
       <tr>
         <td>
+          <a [routerLink]="['/user', user?.email]">
           <img
             class="img-thumbnail cars-img"
             [src]="user?.avatar"
-          />
+          />  
+          </a>
         </td>
         <td>
           <strong>{{ user?.first_name  }}</strong>

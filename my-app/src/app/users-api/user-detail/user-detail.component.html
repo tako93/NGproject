@@ -1,0 +1,21 @@
+<div class="container body">
+  <a class="btn btn-danger" [routerLink]="['/users']">Back</a>
+  <br /><br /><br />
+<div class="d-flex justify-content-center">
+<div class="card" *ngIf="user" style="width: 18rem;">
+  <img [src]="user.avatar" class="card-img-top"  />
+  <div class="card-body">
+    <h5 class="card-title">{{ user.email }}</h5>
+    <!-- <p class="card-text">
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </p> -->
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{ user.first_name }} {{ user.last_name }}</li>
+  </ul>
+</div>
+</div>  
+
+
+</div>
