@@ -13,8 +13,8 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
   
-    if (localStorage.getItem('token')) {
-      this._router.navigate(['/bmw'])
+    if (!localStorage.getItem('token')) {
+      this._router.navigate(['/auth/sign-in'])
     }
     
     

@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NavigationComponent } from './navigation/navigation.component';
 import { BmwModule } from './bmw/bmw.module';
 import { UsersModule } from './users-api/users.module';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -16,20 +17,21 @@ import { UsersModule } from './users-api/users.module';
     AppComponent,
     PageNotFoundComponent,
     NavigationComponent,
+   
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     BmwModule,
+    UsersModule,
+    AuthModule,
     RouterModule.forRoot([
         {
         path: '**',
         component: PageNotFoundComponent,
       }
     ]),
-    UsersModule,
-
     
   ],
   providers: [],
