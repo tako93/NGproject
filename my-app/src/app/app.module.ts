@@ -8,6 +8,7 @@ import { CarsComponent } from './bmw/cars.component';
 import { UsersApiComponent } from './users-api/users-api.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { UsersCardComponent } from './users-api/users-card/users-card.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     UsersApiComponent,
     PageNotFoundComponent,
     NavigationComponent,
+    UsersCardComponent,
 
   ],
   imports: [

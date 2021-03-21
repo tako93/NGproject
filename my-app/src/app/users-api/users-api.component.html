@@ -1,6 +1,19 @@
-<!-- <div class="card" style="width: 18rem;" *ngFor="let item of usersList">
-  <img [src]="usersList.avatar" class="card-img-top" >
-  <div class="card-body">
-    <p class="card-text">{{ usersList.first_name }}</p>
+<section class="row mt-5">
+
+    <div class="starter">
+      <img
+        src="https://images.unsplash.com/photo-1518987048-93e29699e79a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+        style="object-fit: cover; margin-left: 280px; margin-top: -40px;"
+        class="rounded-pill mb-lg-5"
+        alt="BMW"
+      />
+    </div>
+    
+  <div class="row ms-auto">
+    <app-users-card
+      *ngFor="let user of usersList"
+      [user]="user"
+    ></app-users-card>
   </div>
-</div> -->
+</section>
+

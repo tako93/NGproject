@@ -11,10 +11,14 @@ import { Observable } from 'rxjs';
 
 export class UsersService {
 
-    private _baseUrl = 'https://reqres.in/api';
+    private _baseUrl: string = 'https://reqres.in/api';
     constructor(private http: HttpClient) {}
 
-    getUsers(): Observable<IUsers[]>{
-        return this.http.get<IUsers[]>(`${this._baseUrl}/users?page=2`)
+    getUsers(): Observable<IUsers>{
+        return this.http.get<IUsers>(`${this._baseUrl}/users`)
     }
+
+    // getUser(id: number): Observable<IUsers>{
+    //     return this.http.get<IUsers>(`${this._baseUrl}/users/${id}`)
+    // }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IUsers } from './users-api';
+import { IUsersData, IUsers } from './users-api';
 import { UsersService } from './users-api.service';
 
 @Component({
@@ -8,13 +8,16 @@ import { UsersService } from './users-api.service';
   styleUrls: ['./users-api.component.scss']
 })
 export class UsersApiComponent implements OnInit {
+  
 
-  usersList: IUsers[] = [];
+  usersList: IUsersData[] = [];
   constructor(private _usersService: UsersService) { }
 
   ngOnInit(): void {
-    this._usersService.getUsers().subscribe((data) => {
-      this.usersList = data;
+    this._usersService.getUsers().subscribe((responce: IUsers) => {
+      this.usersList = responce.data;
+      console.log(this.usersList)
+  
     })
   }
 
