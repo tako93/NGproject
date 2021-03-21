@@ -12,11 +12,13 @@ import { UsersService } from '../users-api.service';
 export class UserDetailComponent implements OnInit {
   userEmail: string = 'user detail';
   user: IUsersData | undefined;
+
  
   constructor(private route: ActivatedRoute, private _usersService: UsersService) { }
 
   ngOnInit(): void {
     const email = this.route.snapshot.paramMap.get('email');
+    
     this._usersService
       .getUsers()
       .subscribe((responce: IUsers) => {
@@ -26,7 +28,13 @@ export class UserDetailComponent implements OnInit {
         })
         this.user = currentUser
       }
-    })
+      })
+    
+
+ 
+    
+    
+    
   }
 
 }

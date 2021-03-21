@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { IUsers } from './users-api';
+import {  IUsers } from './users-api';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators'
 
@@ -11,14 +11,15 @@ import { tap, catchError } from 'rxjs/operators'
 
 export class UsersService {
 
-    private _baseUrl: string = 'https://reqres.in/api';
+  private _baseUrl: string = 'https://reqres.in/api';
+  private _baseURL: string = 'https://jsonplaceholder.typicode.com/posts';
     constructor(private http: HttpClient) {}
 
     getUsers(): Observable<IUsers>{
         return this.http.get<IUsers>(`${this._baseUrl}/users`
         ).pipe(tap(data => console.log('ALL', JSON.stringify(data)), catchError(this.handleError)))
-    }
-
+  }
+  
     private handleError(error: HttpErrorResponse) {
         let errorMessage = '';
 
