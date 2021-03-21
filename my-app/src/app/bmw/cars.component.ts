@@ -12,11 +12,14 @@ import { CarsService } from './cars.service';
 })
 export class CarsComponent implements OnInit {
 
+ 
+  carsList: Icars[] = [];
+
   private _filterValue: string = '';
   filteredCars: Icars[] = [];
 
-  carsList: Icars[] = [];
-
+ 
+  
   constructor(private _carsService: CarsService) {
 
   }
