@@ -1,5 +1,3 @@
-
-
 export interface IUsers {
     page: number;
     per_page: number;

@@ -9,6 +9,7 @@ import { UsersApiComponent } from './users-api/users-api.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { UsersCardComponent } from './users-api/users-card/users-card.component';
+import { UserDetailComponent } from './users-api/user-detail/user-detail.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { UsersCardComponent } from './users-api/users-card/users-card.component'
     PageNotFoundComponent,
     NavigationComponent,
     UsersCardComponent,
+    UserDetailComponent,
 
   ],
   imports: [
@@ -33,6 +35,10 @@ import { UsersCardComponent } from './users-api/users-card/users-card.component'
         {
         path: 'bmw',
         component: CarsComponent,
+      },
+         {
+        path: 'user/:email',
+        component: UserDetailComponent,
       },
         {
         path: '**',

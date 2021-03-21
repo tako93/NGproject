@@ -1,0 +1,31 @@
+<div class="container body">
+  <a class="btn btn-danger" [routerLink]="['/users']">Back</a>
+  <br /><br /><br />
+  <div class="d-flex justify-content-center">
+    <div class="card" *ngIf="user" style="width: 18rem">
+      <img [src]="user.avatar" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">{{ user.email }}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          {{ user.first_name }} {{ user.last_name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br /><br /><br />
+
+  <div class="border-danger mb-3">
+    <div class="card-body" >
+      <p class="card-text"style="color: aliceblue;">
+        BMW serves purely as a status symbol for some, while for others it's a
+        belief in the mantra “The Ultimate Driving Machine” and philosophy of
+        high revving engines. With that in mind, some are not only attracted to
+        the BMW brand just because they produce great cars, but also because of
+        their way of doing things.
+      </p>
+    </div>
+  </div>
+</div>
