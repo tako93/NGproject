@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NavigationComponent } from './navigation/navigation.component';
 import { UsersCardComponent } from './users-api/users-card/users-card.component';
 import { UserDetailComponent } from './users-api/user-detail/user-detail.component';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { UserDetailComponent } from './users-api/user-detail/user-detail.compone
       {
         path: 'users',
         component: UsersApiComponent,
+        canActivate: [AuthGuard]
       },
         {
         path: 'bmw',
