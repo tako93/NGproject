@@ -5,17 +5,32 @@
     alt="BMW"
   />
   <div class="starter-text">
-    <h2>10 best used BMW models in 2021</h2>
+    <h3 class="text-muted">10 best used BMW models in 2021</h3>
   </div>
 </div>
-
+<figure>
+  <img
+    alt="Logo"
+    class="img-fluid logo"
+    routerlink="/"
+    tabindex="0"
+    src="https://bmwlogo-shared.s3-ap-southeast-1.amazonaws.com/bmw_logo/bmw-logo-light.svg"
+/>
+</figure>
 <br /><br />
 <hr />
-<div class="col-4">
-  <input type="search" class="form-control btn-danger" [(ngModel)]="filterValue" placeholder="enter model name">
-</div>
-<div class="col-2 text-danger">
-  <span>Filter By Model Name:</span> <b>{{ filterValue }}</b>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <input
+      type="search"
+      class="form-control btn-danger"
+      [(ngModel)]="filterValue"
+      placeholder="enter model name"
+    />
+    <div class="col-6 text-danger">
+      <span> Model Name</span>: <b>{{ filterValue }}</b>
+    </div>
+  </div>
 </div>
 <div class="container-fluid">
   <table class="table">

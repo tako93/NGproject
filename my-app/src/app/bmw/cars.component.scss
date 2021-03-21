@@ -21,11 +21,18 @@ tr{
 
 .starter-text {
   position: absolute;
-  bottom: 8px;
+  bottom: 50px;
   left: 16px;
 }
 
 ::placeholder { 
   color: white;
   
+}
+
+
+.logo {
+  position: fixed;
+ right: 30px;
+ top: 20px;
 }

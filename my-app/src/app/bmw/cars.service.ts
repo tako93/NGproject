@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Icars } from './cars';
 
 
-
-
-@Component({
-  selector: 'app-cars',
-  templateUrl: './cars.component.html',
-  styleUrls: ['./cars.component.scss']
+@Injectable({
+    providedIn: 'root',
 })
-export class CarsComponent implements OnInit {
 
-  private _filterValue: string = '';
-  filteredCars: Icars[] = [];
 
-  carsList: Icars[] = [
+export class CarsService {
+
+
+  getCars(): Icars[] {
+
+ return [
     {
       imageUrl: 'https://cars.usnews.com/pics/size/640x420/static/images/article/202101/127424/2015_BMW_Z4_1.jpg',
       model: 'BMW Z4',
@@ -77,26 +75,7 @@ export class CarsComponent implements OnInit {
     },
 
 
-  ]
-
-   get filterValue(): string {
-    return this._filterValue;
-  }
-
-  set filterValue(value: string) {
-    this._filterValue = value;
-    if (this._filterValue) {
-      this.filteredCars = this.carsList.filter((p) => { return p.model.toLowerCase().includes(this._filterValue) });
-    } else {
-      this.filteredCars = this.carsList.slice();
-    }
-  }
-
-  constructor() {
-    this.filterValue = '';
-   }
-
-  ngOnInit(): void {
-  }
+  ]}
 
 }
+

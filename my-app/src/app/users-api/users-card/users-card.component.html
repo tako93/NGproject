@@ -1,0 +1,43 @@
+
+
+<!-- <div class="card col-2">
+  <img [src]="user?.avatar" class="card-img-top" >
+  <div class="card-body">
+    <h5 class="card-title">{{ user?.first_name }}</h5>
+     <h5 class="card-title">{{ user?.last_name }}</h5>
+    <p class="card-text">{{ user?.email }}</p>
+    <a href="#" class="btn btn-primary">More</a>
+  </div>
+</div> -->
+
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr >
+        <th scope="col">IMAGE</th>
+        <th scope="col">NAME</th>
+        <th scope="col">LAST NAME</th>
+        <th scope="col">EMAIL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <img
+            class="img-thumbnail cars-img"
+            [src]="user?.avatar"
+          />
+        </td>
+        <td>
+          <strong>{{ user?.first_name  }}</strong>
+        </td>
+        <td>
+          <strong>{{ user?.last_name  }}</strong>
+        </td>
+        <td>
+          <strong>{{ user?.email }}</strong>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
