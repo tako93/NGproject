@@ -17,7 +17,6 @@ import { AuthModule } from './auth/auth.module';
     AppComponent,
     PageNotFoundComponent,
     NavigationComponent,
-   
   ],
   imports: [
     BrowserModule,
@@ -27,7 +26,12 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     AuthModule,
     RouterModule.forRoot([
-        {
+       {
+        path: '',
+        redirectTo: 'bmw',
+        pathMatch: 'full',
+      }, 
+      {
         path: '**',
         component: PageNotFoundComponent,
       }

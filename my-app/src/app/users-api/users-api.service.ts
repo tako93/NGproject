@@ -12,7 +12,7 @@ import { tap, catchError } from 'rxjs/operators'
 export class UsersService {
 
   private _baseUrl: string = 'https://reqres.in/api';
-  private _baseURL: string = 'https://jsonplaceholder.typicode.com/posts';
+  
     constructor(private http: HttpClient) {}
 
     getUsers(): Observable<IUsers>{
