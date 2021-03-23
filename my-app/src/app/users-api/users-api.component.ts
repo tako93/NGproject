@@ -14,11 +14,11 @@ export class UsersApiComponent implements OnInit {
   constructor(private _usersService: UsersService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._usersService.getUsers().subscribe((responce: IUsers) => {
-    this.usersList = responce.data;
-     })
-      // console.log(this.route.snapshot.data(usersResponse))
-  
+    // this._usersService.getUsers().subscribe((responce: IUsers) => {
+    // 
+    //  })
+      const responce: IUsers = this.route.snapshot.data['usersResponse']
+      this.usersList = responce.data;
    
   }
 
