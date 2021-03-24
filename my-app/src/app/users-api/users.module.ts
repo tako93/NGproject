@@ -6,6 +6,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth.guard';
 import { UserResolver } from './user-resolver.service'
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LogResponceInterceptor } from './log-responce.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,13 @@ import { UserResolver } from './user-resolver.service'
         component: UserDetailComponent,
       },
     ])
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LogResponceInterceptor,
+      multi: true,
+    }
   ],
   exports: [ UsersApiComponent ]
 })
