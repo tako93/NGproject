@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IUsersData, IUsers } from './users-api';
 import { UsersService } from './users-api.service';
-
+import { ActivatedRoute } from '@angular/router'
 @Component({
   selector: 'app-users-api',
   templateUrl: './users-api.component.html',
@@ -11,14 +11,15 @@ export class UsersApiComponent implements OnInit {
   
 
   usersList: IUsersData[] = [];
-  constructor(private _usersService: UsersService) { }
+  constructor(private _usersService: UsersService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._usersService.getUsers().subscribe((responce: IUsers) => {
+    // this._usersService.getUsers().subscribe((responce: IUsers) => {
+    // 
+    //  })
+      const responce: IUsers = this.route.snapshot.data['usersResponse']
       this.usersList = responce.data;
-      console.log(this.usersList)
-  
-    })
+   
   }
 
 }
