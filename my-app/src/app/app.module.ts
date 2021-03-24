@@ -12,6 +12,7 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { LogResponceInterceptor } from './core/log-responce.interceptor';
 import { CacheInterceptor } from './core/cache.interceptor';
+import { AddAuthTokenInterceptor } from './core/auth-token.interceptor';
 
 
 
@@ -45,6 +46,11 @@ import { CacheInterceptor } from './core/cache.interceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
+      useClass: AddAuthTokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: LogResponceInterceptor,
       multi: true,
     },
@@ -59,6 +65,3 @@ import { CacheInterceptor } from './core/cache.interceptor';
 export class AppModule { }
 
 
-// CacheInterceptor,
-//     HttpCacheService,
-//     LogResponceInterceptor
