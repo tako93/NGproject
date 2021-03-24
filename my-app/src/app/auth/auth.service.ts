@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { SignInData } from '../data/sign-in-form.interface';
-
+import { HttpClient } from '@angular/common/http'
+import { SignInData, SignInResponse } from '../data/sign-in-form.interface';
+import { LocalStorageService } from "../core/storage.service"
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
-  signIn(data: SignInData) {
-    return 'ok'
+  constructor( private storageService: LocalStorageService, private http: HttpClient ) { }
+  signIn(data: SignInData): Observable<SignInResponse> {
+    return this.http.post<SignInResponse>('https://reqres.in/api/login', data);
   }
 }
