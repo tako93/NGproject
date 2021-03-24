@@ -5,11 +5,9 @@ import { UsersCardComponent } from './users-card/users-card.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth.guard';
-import { UserResolver } from './user-resolver.service'
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { CoreModule } from '../core/core.module';
-// import { LogResponceInterceptor } from '../core/log-responce.interceptor';
-// import { CacheInterceptor } from '../core/cache.interceptor';
+import { UserResolver } from './user-resolver.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +17,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   imports: [
     CommonModule,
-
+    NgxPaginationModule,
     RouterModule.forChild([
       {
         path: 'users',
