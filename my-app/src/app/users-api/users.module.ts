@@ -8,6 +8,7 @@ import { AuthGuard } from '../auth.guard';
 import { UserResolver } from './user-resolver.service'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogResponceInterceptor } from './log-responce.interceptor';
+import { CacheInterceptor } from './cache.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,11 @@ import { LogResponceInterceptor } from './log-responce.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LogResponceInterceptor,
+      multi: true,
+    },
+      {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CacheInterceptor,
       multi: true,
     }
   ],
