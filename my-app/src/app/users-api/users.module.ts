@@ -7,8 +7,9 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth.guard';
 import { UserResolver } from './user-resolver.service'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LogResponceInterceptor } from './log-responce.interceptor';
-import { CacheInterceptor } from './cache.interceptor';
+// import { CoreModule } from '../core/core.module';
+// import { LogResponceInterceptor } from '../core/log-responce.interceptor';
+// import { CacheInterceptor } from '../core/cache.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CacheInterceptor } from './cache.interceptor';
   ],
   imports: [
     CommonModule,
+
     RouterModule.forChild([
       {
         path: 'users',
@@ -34,16 +36,7 @@ import { CacheInterceptor } from './cache.interceptor';
     ])
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LogResponceInterceptor,
-      multi: true,
-    },
-      {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CacheInterceptor,
-      multi: true,
-    }
+  
   ],
   exports: [ UsersApiComponent ]
 })
