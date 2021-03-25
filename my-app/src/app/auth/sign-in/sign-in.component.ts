@@ -25,8 +25,8 @@ export class SignInComponent implements OnInit {
   onSubmit(signInForm: NgForm) {
     this._authService
       .signIn(this.signInData)
-      .subscribe((response: SignInResponse) => {
-        console.log(response);
+      .subscribe((isAuthorized: boolean) => {
+        console.log(isAuthorized);
         this.router.navigate(['/users']);
       });
   }
