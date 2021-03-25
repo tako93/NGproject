@@ -1,7 +1,54 @@
 
-
-<nav class="nav  navbar-brand">
-  <a class="nav-link text-danger" aria-current="page" [routerLink]="['/bmw']"> <strong>BMW</strong></a>
-  <a class="nav-link text-danger" [routerLink]="['/users']"><strong>Users</strong></a>
-   <a class="nav-link text-danger" [routerLink]="['/auth/sign-in']"><strong>Sign In</strong></a>
+<nav class="navbar navbar-expand-lg navbar-brand">
+  <figure>
+    <img
+      alt="Logo"
+      class="img-fluid logo"
+      routerlink="/"
+      tabindex="0"
+      src="https://bmwlogo-shared.s3-ap-southeast-1.amazonaws.com/bmw_logo/bmw-logo-light.svg"
+    />
+  </figure>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarNavAltMarkup"
+    >
+      <div class="navbar-nav ">
+        <a
+          class="nav-link text-danger "
+          aria-current="page"
+          [routerLink]="['/bmw']"
+        >
+          <strong>BMW</strong></a
+        >
+        <a class="nav-link text-danger" [routerLink]="['/users']"
+          ><strong>Users</strong></a
+        >
+        <a class="nav-link text-danger" [routerLink]="['/auth/sign-in']"
+          ><strong>Sign In</strong></a
+        >
+        <a class="nav-link text-danger" [routerLink]="['/auth/sign-up']"
+          ><strong>Sign Up</strong></a
+        >
+      </div>
+      <div class="navbar-nav">
+        <button class="btn btn-warning" (click)="onLogOut($event)">
+          Log Out
+        </button>
+      </div>
+    </div>
+  </div>
 </nav>
+<br>
