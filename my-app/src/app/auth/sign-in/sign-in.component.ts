@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  SignInData,
-  SignInResponse,
-} from 'src/app/data/sign-in-form.interface';
+import { SignInData } from 'src/app/data/sign-in-form.interface';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -25,8 +22,8 @@ export class SignInComponent implements OnInit {
   onSubmit(signInForm: NgForm) {
     this._authService
       .signIn(this.signInData)
-      .subscribe((response: SignInResponse) => {
-        console.log(response);
+      .subscribe((isAuthorized: boolean) => {
+        console.log(isAuthorized);
         this.router.navigate(['/users']);
       });
   }

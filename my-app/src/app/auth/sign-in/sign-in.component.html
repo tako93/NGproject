@@ -5,7 +5,7 @@
     <h2 class="text-center mb-4 text-muted">Sign In</h2>
   </div>
   <!-- {{ signInData | json }} -->
-  <hr class="divider" style="color: rgba(3, 3, 190, 0.527);" />
+  <hr class="divider" style="color: rgba(3, 3, 190, 0.527)" />
   <br />
   <div class="col-6 mx-auto">
     <form #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
@@ -35,12 +35,19 @@
           class="form-check-input"
           id="remember"
           [(ngModel)]="signInData.remember"
-           name="remember"
+          name="remember"
         />
         <label class="form-check-label" for="remember">Check me out</label>
       </div>
+      <p>
+        <a class="btn btn-link" [routerLink]="['/auth/sign-up']">Sign Up</a>
+      </p>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 </div>
- <img src="https://images.unsplash.com/photo-1563826773-1e2b4b2cde42?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=433&q=80" class="rounded mx-auto d-block rounded-pill" style="max-width: 300px;">
+<img
+  src="https://images.unsplash.com/photo-1563826773-1e2b4b2cde42?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=433&q=80"
+  class="rounded mx-auto d-block rounded-pill"
+  style="max-width: 300px"
+/>

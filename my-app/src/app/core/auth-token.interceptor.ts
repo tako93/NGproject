@@ -8,6 +8,8 @@ import {
 } from '@angular/common/http';
 
 import { LocalStorageService } from './storage.service';
+import { TOKEN_KEY } from '../shared/constants';
+
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +23,10 @@ export class AddAuthTokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     console.info('AddAuthTokenInterceptor', req.url);
 
-    if (this.storage.exists('auth-token')) {
+    if (this.storage.exists(TOKEN_KEY)) {
       const clonedReq: HttpRequest<any> = req.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.storage.get('auth-token')}`,
+          Authorization: `Bearer ${this.storage.get(TOKEN_KEY)}`,
         },
       });
 
