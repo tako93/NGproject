@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CarsComponent } from '../bmw/cars.component';
 import { FormsModule } from '@angular/forms';
+// import { AuthGuard } from '../auth.guard';
 
 
 
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
        {
         path: 'bmw',
         component: CarsComponent,
+        // canActivate: [AuthGuard]
       },
     ])
   ]

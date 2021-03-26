@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AccountComponent } from './account/account.component';
 
 import { AuthGuard } from '../auth.guard';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -9,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
+    AccountComponent,
     
     SignInComponent,
     SignUpComponent,
@@ -26,6 +28,11 @@ import { FormsModule } from '@angular/forms';
         component: SignUpComponent,
       },
   
+      {
+        path: 'auth/account',
+        component: AccountComponent,
+        canActivate: [AuthGuard],
+      },
     ]),
   ],
 })

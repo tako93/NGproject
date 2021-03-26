@@ -35,8 +35,13 @@ export class SignInComponent implements OnInit {
     this._authService
       .signIn(this.signInData)
       .subscribe((isAuthorized: boolean) => {
+        
         if (isAuthorized) {
-          this.router.navigate(['/users']);
+          if (this._authService.redirectUrl !== '') {
+             this.router.navigateByUrl(this._authService.redirectUrl)
+          } else {
+            this.router.navigate(['auth/users'])
+          }
         };
       });
   }

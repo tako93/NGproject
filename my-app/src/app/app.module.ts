@@ -13,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { LogResponceInterceptor } from './core/log-responce.interceptor';
 import { CacheInterceptor } from './core/cache.interceptor';
 import { AddAuthTokenInterceptor } from './core/auth-token.interceptor';
+// import { AccountComponent } from './auth/account/account.component';
 // import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 
@@ -22,7 +23,7 @@ import { AddAuthTokenInterceptor } from './core/auth-token.interceptor';
     AppComponent,
     PageNotFoundComponent,
     NavigationComponent,
-    // SignUpComponent,
+    // AccountComponent,
   ],
   imports: [
     BrowserModule,
