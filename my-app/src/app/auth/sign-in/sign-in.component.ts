@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignInData } from 'src/app/data/sign-in-form.interface';
 import { AuthService } from '../auth.service';
+import { User } from '../../data/user-data.interface'
+import { UserRole } from 'src/app/data/user-roles.interface';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -10,6 +13,15 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
+
+  private activeUser: User = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    avatar: '',
+    role: UserRole.guest,
+  }
+
   signInData: SignInData = {
     email: 'eve.holt@reqres.in',
     password: 'cityslicka',
@@ -23,8 +35,9 @@ export class SignInComponent implements OnInit {
     this._authService
       .signIn(this.signInData)
       .subscribe((isAuthorized: boolean) => {
-        console.log(isAuthorized);
-        this.router.navigate(['/users']);
+        if (isAuthorized) {
+          this.router.navigate(['/users']);
+        };
       });
   }
 }
