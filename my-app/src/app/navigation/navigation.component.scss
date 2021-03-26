@@ -1,0 +1,15 @@
+@media screen and (min-width: 500px) {
+    .navR {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 0;
+        align-items: center;
+    }
+    .main-nav {
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    
+}
