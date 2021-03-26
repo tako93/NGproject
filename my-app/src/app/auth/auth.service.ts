@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 import { LocalStorageService } from '../core/storage.service';
 
@@ -10,7 +12,9 @@ import {
   AUTH_BASE_API_URL,
   TOKEN_EXP_KEY,
   TOKEN_TTL,
+  REFRESH_TOKEN_KEY,
 } from '../shared/constants';
+
 import { SignInData, SignInResponse } from '../data/sign-in-form.interface';
 import { SignUpData, SignUpResponse } from '../data/sign-up-form.interface';
 
@@ -18,9 +22,13 @@ import { SignUpData, SignUpResponse } from '../data/sign-up-form.interface';
   providedIn: 'root',
 })
 export class AuthService {
+  redirectUrl: string = '';
+
   constructor(
     private storageService: LocalStorageService,
-    private http: HttpClient
+    private http: HttpClient,
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth
   ) {}
 
   signIn(data: SignInData): Observable<boolean> {
@@ -29,6 +37,7 @@ export class AuthService {
       .pipe(
         tap((result) => {
           this.storageService.set(TOKEN_KEY, result.token);
+          this.storageService.set(REFRESH_TOKEN_KEY, 'REFRESH_TOKEN');
           this.setTokenLifeTime();
         }),
         map((result) => {
@@ -39,6 +48,17 @@ export class AuthService {
           }
         })
       );
+  }
+
+  async firebaseSignIn(data: SignInData) {
+    return this.afAuth.signInWithEmailAndPassword(data.email, data.password);
+  }
+
+  async firebaseSignUp(data: SignUpData) {
+    return this.afAuth.createUserWithEmailAndPassword(
+      data.email,
+      data.password
+    );
   }
 
   signUp(data: SignUpData): Observable<boolean> {
@@ -71,8 +91,25 @@ export class AuthService {
     return currentTime > tokenTime.getTime();
   }
 
+  getRefreshToken(): string | undefined {
+    return this.storageService.get(REFRESH_TOKEN_KEY);
+  }
+
+  refreshToken(token: string): boolean {
+    if (token === 'REFRESH_TOKEN') {
+      this.storageService.set(TOKEN_KEY, 'QpwL5tke4Pnpja7X4');
+      this.storageService.set(REFRESH_TOKEN_KEY, 'REFRESH_TOKEN');
+      this.setTokenLifeTime();
+
+      return true;
+    }
+    return false;
+  }
+
   logOut(): void {
     this.storageService.remove(TOKEN_KEY);
+    this.storageService.remove(REFRESH_TOKEN_KEY);
+    this.storageService.remove(TOKEN_EXP_KEY);
   }
   isAuthorized(): boolean {
     return this.storageService.exists(TOKEN_KEY);

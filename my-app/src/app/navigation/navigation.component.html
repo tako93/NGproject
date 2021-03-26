@@ -10,7 +10,7 @@
     />
   </figure>
   <div class="container-fluid">
-    <button
+    <!-- <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -20,9 +20,9 @@
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
     <div
-      class="collapse navbar-collapse justify-content-between"
+      class="  navbar-collapse navR"
       id="navbarNavAltMarkup"
     >
       <div class="navbar-nav ">
@@ -36,6 +36,9 @@
         <a class="nav-link text-danger" [routerLink]="['/users']"
           ><strong>Users</strong></a
         >
+        <a class="nav-link text-danger" [routerLink]="['auth/account']"
+          ><strong>Account</strong></a
+        >
         <a class="nav-link text-danger" [routerLink]="['/auth/sign-in']"
           ><strong>Sign In</strong></a
         >
@@ -43,7 +46,8 @@
           ><strong>Sign Up</strong></a
         >
       </div>
-      <div class="navbar-nav">
+      
+      <div class="navbar-nav ms-4">
         <button class="btn btn-warning" (click)="onLogOut($event)">
           Log Out
         </button>

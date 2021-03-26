@@ -12,9 +12,11 @@ export class AuthGuard implements CanActivate {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
   
     if (!this.authservice.isAuthorized()) {
+      this.authservice.redirectUrl = state.url;
       this._router.navigate(['/auth/sign-in'])
     }
     
