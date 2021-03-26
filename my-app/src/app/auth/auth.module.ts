@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AccountComponent } from './account/account.component';
+import { AccountComponent } from '../account/account.component';
 
 import { AuthGuard } from '../auth.guard';
 import { SignInComponent } from './sign-in/sign-in.component';

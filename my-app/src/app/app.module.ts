@@ -4,7 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { BmwModule } from './bmw/bmw.module';
 import { UsersModule } from './users-api/users.module';
