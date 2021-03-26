@@ -1,0 +1,19 @@
+.imgR {
+      width: auto;
+      height: 500px;
+      display: flex;
+      flex-direction: justify-content-around;
+      margin: 40px;
+
+}
+
+
+@media screen and (width: 500px) {
+    .imgR {
+      width: 400px;
+      height: 500px;
+      display: unset;
+    }
+
+    
+}
