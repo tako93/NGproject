@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class UsersApiComponent implements OnInit, OnChanges, OnDestroy {
 
-  p: number = 1;
+  // p: number = 1;
   usersList: IUsersData[] = [];
   // filterData: FilterForm = this._usersService.filterData
   constructor(private _usersService: UsersService, private route: ActivatedRoute) { }

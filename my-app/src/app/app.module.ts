@@ -1,21 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import { RouterModule } from '@angular/router'
-import { FormsModule } from '@angular/forms'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavigationComponent } from './navigation/navigation.component';
+
 import { BmwModule } from './bmw/bmw.module';
 import { UsersModule } from './users-api/users.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+
 import { LogResponceInterceptor } from './core/log-responce.interceptor';
 import { CacheInterceptor } from './core/cache.interceptor';
 import { AddAuthTokenInterceptor } from './core/auth-token.interceptor';
-// import { AccountComponent } from './auth/account/account.component';
-// import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -29,6 +34,9 @@ import { AddAuthTokenInterceptor } from './core/auth-token.interceptor';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     BmwModule,
     UsersModule,
     AuthModule,

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/core/storage.service';
 import { SignInData } from 'src/app/data/sign-in-form.interface';
+import { TOKEN_KEY } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
-import { User } from '../../data/user-data.interface'
-import { UserRole } from 'src/app/data/user-roles.interface';
-
 
 @Component({
   selector: 'app-sign-in',
@@ -13,36 +12,35 @@ import { UserRole } from 'src/app/data/user-roles.interface';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-
-  private activeUser: User = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    avatar: '',
-    role: UserRole.guest,
-  }
-
   signInData: SignInData = {
-    email: 'eve.holt@reqres.in',
-    password: 'cityslicka',
+    email: 'takko.city@mail.com',
+    password: 'takotako',
     remember: false,
   };
-  constructor(private router: Router, private _authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private _authService: AuthService,
+    private storageService: LocalStorageService
+  ) {}
 
   ngOnInit(): void {}
 
-  onSubmit(signInForm: NgForm) {
-    this._authService
-      .signIn(this.signInData)
-      .subscribe((isAuthorized: boolean) => {
-        
-        if (isAuthorized) {
-          if (this._authService.redirectUrl !== '') {
-             this.router.navigateByUrl(this._authService.redirectUrl)
-          } else {
-            this.router.navigate(['auth/users'])
-          }
-        };
-      });
+  async onSubmit(signInForm: NgForm) {
+    try {
+      const result = await this._authService.firebaseSignIn(this.signInData);
+      const idTokeResult = await result.user?.getIdTokenResult();
+      if (idTokeResult?.token) {
+        this.storageService.set(TOKEN_KEY, idTokeResult.token);
+        if (this._authService.redirectUrl !== '') {
+          this.router.navigateByUrl(this._authService.redirectUrl);
+        } else {
+          this.router.navigate(['auth/account']);
+        }
+      }
+    } catch (err) {
+      // console.log(err);
+    }
   }
 }
+
+
