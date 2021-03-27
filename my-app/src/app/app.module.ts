@@ -20,7 +20,7 @@ import { LogResponceInterceptor } from './core/log-responce.interceptor';
 import { CacheInterceptor } from './core/cache.interceptor';
 import { AddAuthTokenInterceptor } from './core/auth-token.interceptor';
 
-import { environment } from '../environments/environment';
+import { firebaseConfig } from '../firebaseConfig';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     BmwModule,

@@ -16,11 +16,15 @@
     </p>
 
     <button class="btn btn-primary" (click)="onAddItem()">Add Item</button>
-
+<br>
     <ul *ngIf="list.length">
       <li *ngFor="let item of list" (click)="onRemove(item.id)">
         {{ item | json }}
       </li>
     </ul>
+     <div class="starter-text text-white">
+    <hr style="color: aqua" />
+  
+    </div>
   </div>
 </div>
