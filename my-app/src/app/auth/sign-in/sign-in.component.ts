@@ -3,8 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/storage.service';
 import { SignInData } from 'src/app/data/sign-in-form.interface';
-import { TOKEN_KEY } from 'src/app/shared/constants';
-import { AuthService } from '../auth.service';
+import { TOKEN_KEY } from 'src/app/auth/shared/constants';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -26,6 +26,18 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {}
 
   async onSubmit(signInForm: NgForm) {
+    // this._authService
+    //   .signIn(this.signInData)
+    //   .subscribe((isAuthorized: boolean) => {
+    //     if (isAuthorized) {
+    //       if (this._authService.redirectUrl !== '') {
+    //         this.router.navigateByUrl(this._authService.redirectUrl);
+    //       } else {
+    //         this.router.navigate(['auth/account']);
+    //       }
+    //     }
+    //   });
+    
     try {
       const result = await this._authService.firebaseSignIn(this.signInData);
       const idTokeResult = await result.user?.getIdTokenResult();

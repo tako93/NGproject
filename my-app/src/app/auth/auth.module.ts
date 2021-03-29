@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AccountComponent } from '../account/account.component';
+import { FormsModule } from '@angular/forms';
+import { PublicModule } from '../public/public.module';
 
-import { AuthGuard } from '../auth.guard';
+
+import { AccountComponent } from './account/account.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { FormsModule } from '@angular/forms';
+
+import { AuthGuard } from '../auth.guard';
+
+
 
 @NgModule({
   declarations: [
@@ -18,6 +23,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    PublicModule,
     RouterModule.forChild([
       {
         path: 'auth/sign-in',

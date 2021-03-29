@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
-import { TOKEN_KEY } from 'src/app/shared/constants';
+import { AuthService } from '../shared/auth.service';
+import { TOKEN_KEY } from 'src/app/auth/shared/constants';
 import { SignUpData } from '../../data/sign-up-form.interface';
 import { NgForm } from '@angular/forms';
 import { LocalStorageService } from 'src/app/core/storage.service';
@@ -21,6 +21,12 @@ export class SignUpComponent implements OnInit {
 
   async onSubmit(signUpForm: NgForm) {
  
+    //  this.authService.signUp(this.signUpData).subscribe((registered) => {
+    //   if (registered) {
+    //     this.router.navigate(['auth/account']);
+    //   }
+    // });
+
     try {
       const record = await this.authService.firebaseSignUp(this.signUpData);
       const idTokeResult = await record.user?.getIdTokenResult();
@@ -33,7 +39,6 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(['auth/account']);
         }
      }
-    //  this.router.navigate(['auth/account']);
     } catch (err) {
       console.log('ERROR', err.message);
     }

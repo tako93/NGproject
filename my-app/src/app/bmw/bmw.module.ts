@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     RouterModule.forChild([
        {
-        path: 'bmw',
+        path: '',
         component: CarsComponent,
         // canActivate: [AuthGuard]
       },

@@ -21,6 +21,7 @@ import { CacheInterceptor } from './core/cache.interceptor';
 import { AddAuthTokenInterceptor } from './core/auth-token.interceptor';
 
 import { firebaseConfig } from '../firebaseConfig';
+import { PublicModule } from './public/public.module';
 
 
 @NgModule({
@@ -28,7 +29,6 @@ import { firebaseConfig } from '../firebaseConfig';
     AppComponent,
     PageNotFoundComponent,
     NavigationComponent,
-    // AccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,12 +37,16 @@ import { firebaseConfig } from '../firebaseConfig';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    BmwModule,
     UsersModule,
     AuthModule,
     CoreModule,
     RouterModule.forRoot([
-       {
+      {
+        path: 'bmw',
+        loadChildren: () =>
+          import('./bmw/bmw.module').then((m) => m.BmwModule),
+      },
+      {
         path: '',
         redirectTo: 'bmw',
         pathMatch: 'full',
@@ -52,6 +56,7 @@ import { firebaseConfig } from '../firebaseConfig';
         component: PageNotFoundComponent,
       }
     ]),
+    PublicModule,
   
     
   ],

@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 
 import { LocalStorageService } from './storage.service';
-import { TOKEN_KEY } from '../shared/constants';
+import { TOKEN_KEY } from '../auth/shared/constants';
 
 
 @Injectable({
