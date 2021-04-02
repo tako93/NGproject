@@ -19,7 +19,8 @@
         >
           <strong>BMW</strong></a
         >
-        <a
+        <div class="navbar-nav" *ngIf="(fireAuthService.currentUser$ | async)?.uid">
+          <a
           class="nav-link text-danger"
           [routerLink]="['/users']"
           routerLinkActive="active"
@@ -31,7 +32,15 @@
           routerLinkActive="active"
           ><strong>Account</strong></a
         >
-        <a
+       
+        <div class="navbar-nav ms-4">
+          <button class="btn btn-warning" (click)="onLogOut($event)">
+            Log Out
+          </button>
+        </div>
+ </div>
+        <div class="navbar-nav"  *ngIf="!(fireAuthService.currentUser$ | async)?.uid">
+          <a
           class="nav-link text-danger"
           [routerLink]="['/auth/sign-in']"
           routerLinkActive="active"
@@ -43,14 +52,13 @@
           routerLinkActive="active"
           ><strong>Sign Up</strong></a
         >
-      </div>
-
-      <div class="navbar-nav ms-4">
-        <button class="btn btn-warning" (click)="onLogOut($event)">
-          Log Out
-        </button>
+        </div>
       </div>
     </div>
   </div>
 </nav>
 <br />
+
+<!-- this.fireAuthService.currentUser$.subscribe((user) => {
+     console.log(user)
+   }) -->
