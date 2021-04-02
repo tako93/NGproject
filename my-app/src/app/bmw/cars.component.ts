@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Icars } from './cars';
-import { CarsService } from './cars.service';
+import { Icars } from './shared/cars';
+import { CarsService } from './shared/cars.service';
 
 
 
