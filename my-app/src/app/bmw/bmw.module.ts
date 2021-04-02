@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CarsComponent } from '../bmw/cars.component';
 import { FormsModule } from '@angular/forms';
+import { BmwAddComponent } from './bmw-add/bmw-add.component';
 // import { AuthGuard } from '../auth.guard';
 
 
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     CarsComponent,
+    BmwAddComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,10 @@ import { FormsModule } from '@angular/forms';
        {
         path: '',
         component: CarsComponent,
-        // canActivate: [AuthGuard]
+      },
+       {
+        path: 'add',
+        component: BmwAddComponent,
       },
     ])
   ]
