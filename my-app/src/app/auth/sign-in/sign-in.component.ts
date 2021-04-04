@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { SignInData } from 'src/app/data/sign-in-form.interface';
 import { FirebaseAuthService } from '../shared/firebase-auth.service';
 
@@ -9,35 +9,30 @@ import { FirebaseAuthService } from '../shared/firebase-auth.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  // signInData: SignInData = {
-  //   email: 'takko.city@mail.com',
-  //   password: 'takotako',
-  //   remember: false,
-  // };
+ 
+  mouseOverSignInButton: boolean = false;
 
-  public email = '';
-
-   signInData: SignInData = {
+  signInData: SignInData = {
     email: '',
     password: '',
     remember: false,
   };
 
-  constructor(
-    private fireAuthService: FirebaseAuthService,
-  ) {}
+  constructor(public fireAuthService: FirebaseAuthService) {}
 
   ngOnInit(): void {}
 
-  async onSubmit(signInForm: NgForm) {
-   
-
-    this.fireAuthService.signin(this.signInData)
+  onSubmit(signInForm: SignInData) {
+    this.fireAuthService.hasError = null;
+    this.fireAuthService.signin(this.signInData);
   }
 
   SignInWithGoogle() {
     this.fireAuthService.googleSignIn();
   }
+
+  toggleMouseOver(value: boolean) {
+    this.mouseOverSignInButton = value;
+  }
+
 }
-
-

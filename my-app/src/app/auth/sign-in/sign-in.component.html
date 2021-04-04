@@ -10,16 +10,19 @@
   <div class="col-6 mx-auto">
     <form
       #signInForm="ngForm"
-      (ngSubmit)="onSubmit(signInForm)"
+      (ngSubmit)="onSubmit(signInForm.value)"
       autocomplete="off"
     >
+      <div class="alert alert-danger" *ngIf="fireAuthService.hasError">
+        <p class="m-0">{{ fireAuthService.hasError }}</p>
+      </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <em
           class="required"
           *ngIf="
             signInForm.controls.email?.invalid &&
-            signInForm.controls.email?.touched
+            (signInForm.controls.email?.touched || mouseOverSignInButton)
           "
           >Required</em
         >
@@ -29,7 +32,7 @@
           [ngClass]="{
             'is-invalid':
               signInForm.controls.email?.invalid &&
-              signInForm.controls.email?.touched
+              (signInForm.controls.email?.touched || mouseOverSignInButton)
           }"
           id="email"
           [(ngModel)]="signInData.email"
@@ -43,7 +46,7 @@
           class="required"
           *ngIf="
             signInForm.controls.password?.invalid &&
-            signInForm.controls.password?.touched
+            (signInForm.controls.password?.touched || mouseOverSignInButton)
           "
           >Required</em
         >
@@ -53,7 +56,7 @@
           [ngClass]="{
             'is-invalid':
               signInForm.controls.password?.invalid &&
-              signInForm.controls.password?.touched
+              (signInForm.controls.password?.touched || mouseOverSignInButton)
           }"
           id="password"
           [(ngModel)]="signInData.password"
@@ -71,21 +74,25 @@
         />
         <label class="form-check-label" for="remember">Check me out</label>
       </div>
-      <p>
-        <a class="btn btn-link" [routerLink]="['/auth/sign-up']">Sign Up</a>
-      </p>
+
       <p>
         <button class="btn btn-info" (click)="SignInWithGoogle()" type="button">
           Sign In <i class="fab fa-google"></i>
         </button>
+        <a class="btn btn-link" [routerLink]="['/auth/sign-up']">Sign Up</a>
       </p>
-      <button
-        type="submit"
-        class="btn btn-primary"
-        [disabled]="signInForm.invalid"
+      <span
+        (mouseenter)="toggleMouseOver(true)"
+        (mouseleave)="toggleMouseOver(false)"
       >
-        Sign In
-      </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="signInForm.invalid"
+        >
+          Sign In
+        </button>
+      </span>
     </form>
   </div>
 </div>

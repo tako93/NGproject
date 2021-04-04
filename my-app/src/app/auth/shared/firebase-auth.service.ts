@@ -6,14 +6,17 @@ import firebase from 'firebase/app';
 import { SignInData } from 'src/app/data/sign-in-form.interface';
 import { SignUpData } from 'src/app/data/sign-up-form.interface';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseAuthService {
   currentUser$ = new Observable<firebase.User | null>();
+  hasError: string | null;
 
   constructor(private router: Router, private afAuth: AngularFireAuth) {
     this.currentUser$ = this.afAuth.authState;
+    this.hasError = null;
   }
 
   googleSignIn() {
@@ -43,12 +46,13 @@ export class FirebaseAuthService {
 
   signin(data: SignInData) {
     this.afAuth
-      .createUserWithEmailAndPassword(data.email, data.password)
+      .signInWithEmailAndPassword(data.email, data.password)
       .then(() => {
         this.router.navigate(['/bmw']);
       })
       .catch((error) => {
         console.log('[FirebaseAuthService@SignIn]', error);
+        this.hasError = error.message;
       });
   }
   signOut() {
