@@ -8,25 +8,57 @@
   <hr class="divider" style="color: rgba(3, 3, 190, 0.527)" />
   <br />
   <div class="col-6 mx-auto">
-    <form #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
+    <form
+      #signInForm="ngForm"
+      (ngSubmit)="onSubmit(signInForm)"
+      autocomplete="off"
+    >
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
+        <em
+          class="required"
+          *ngIf="
+            signInForm.controls.email?.invalid &&
+            signInForm.controls.email?.touched
+          "
+          >Required</em
+        >
         <input
           type="email"
           class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              signInForm.controls.email?.invalid &&
+              signInForm.controls.email?.touched
+          }"
           id="email"
           [(ngModel)]="signInData.email"
           name="email"
+          required
         />
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
+        <em
+          class="required"
+          *ngIf="
+            signInForm.controls.password?.invalid &&
+            signInForm.controls.password?.touched
+          "
+          >Required</em
+        >
         <input
           type="password"
           class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              signInForm.controls.password?.invalid &&
+              signInForm.controls.password?.touched
+          }"
           id="password"
           [(ngModel)]="signInData.password"
           name="password"
+          required
         />
       </div>
       <div class="mb-3 form-check">
@@ -47,7 +79,13 @@
           Sign In <i class="fab fa-google"></i>
         </button>
       </p>
-      <button type="submit" class="btn btn-primary">Sign In</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="signInForm.invalid"
+      >
+        Sign In
+      </button>
     </form>
   </div>
 </div>
