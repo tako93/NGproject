@@ -76,14 +76,14 @@
       </div>
 
       <p>
-        <button class="btn btn-info" (click)="SignInWithGoogle()" type="button">
+        <button class="btn btn-info" (click)="signInWithGoogle()" type="button">
           Sign In <i class="fab fa-google"></i>
         </button>
         <a class="btn btn-link" [routerLink]="['/auth/sign-up']">Sign Up</a>
       </p>
       <span
-        (mouseenter)="toggleMouseOver(true)"
-        (mouseleave)="toggleMouseOver(false)"
+        (mouseenter)="toggleMouserOver(true)"
+        (mouseleave)="toggleMouserOver(false)"
       >
         <button
           type="submit"

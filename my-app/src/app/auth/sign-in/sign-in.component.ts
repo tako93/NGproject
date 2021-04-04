@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm } from '@angular/forms';
+
 import { SignInData } from 'src/app/data/sign-in-form.interface';
+
 import { FirebaseAuthService } from '../shared/firebase-auth.service';
 
 @Component({
@@ -9,14 +10,13 @@ import { FirebaseAuthService } from '../shared/firebase-auth.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
- 
-  mouseOverSignInButton: boolean = false;
-
   signInData: SignInData = {
     email: '',
     password: '',
     remember: false,
   };
+
+  mouseOverSignInButton: boolean = false;
 
   constructor(public fireAuthService: FirebaseAuthService) {}
 
@@ -24,15 +24,15 @@ export class SignInComponent implements OnInit {
 
   onSubmit(signInForm: SignInData) {
     this.fireAuthService.hasError = null;
-    this.fireAuthService.signin(this.signInData);
+    this.fireAuthService.signin(signInForm);
   }
 
-  SignInWithGoogle() {
+  signInWithGoogle() {
+    this.fireAuthService.hasError = null;
     this.fireAuthService.googleSignIn();
   }
 
-  toggleMouseOver(value: boolean) {
+  toggleMouserOver(value: boolean) {
     this.mouseOverSignInButton = value;
   }
-
 }
