@@ -22,14 +22,12 @@ import { AddAuthTokenInterceptor } from './core/auth-token.interceptor';
 
 import { firebaseConfig } from '../firebaseConfig';
 import { PublicModule } from './public/public.module';
+import { StoreModule } from '@ngrx/store';
 
+import { counterReducer } from './auth/account/state/counter.reducer';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    NavigationComponent,
-  ],
+  declarations: [AppComponent, PageNotFoundComponent, NavigationComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -40,25 +38,28 @@ import { PublicModule } from './public/public.module';
     UsersModule,
     AuthModule,
     CoreModule,
+    PublicModule,
+    StoreModule.forRoot(
+      {
+        counter: counterReducer,
+      },
+      {}
+    ),
     RouterModule.forRoot([
       {
         path: 'bmw',
-        loadChildren: () =>
-          import('./bmw/bmw.module').then((m) => m.BmwModule),
+        loadChildren: () => import('./bmw/bmw.module').then((m) => m.BmwModule),
       },
       {
         path: '',
         redirectTo: 'bmw',
         pathMatch: 'full',
-      }, 
+      },
       {
         path: '**',
         component: PageNotFoundComponent,
-      }
+      },
     ]),
-    PublicModule,
-  
-    
   ],
   providers: [
     {
@@ -71,14 +72,12 @@ import { PublicModule } from './public/public.module';
       useClass: LogResponceInterceptor,
       multi: true,
     },
-     {
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: CacheInterceptor,
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
-
+export class AppModule {}

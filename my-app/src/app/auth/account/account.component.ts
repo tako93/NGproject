@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FireStoreService } from '../../core/firestore.service';
 import { Todo, NewTodo } from '../shared/todo';
+import { Store } from '@ngrx/store';
+import { reset, increment, decrement } from './state/counter.actions';
+import { ICounter } from './state/counter.interface';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
-
   title: string = 'account template string';
   list: Todo[] = [];
   isEditing: boolean = false;
@@ -18,13 +21,20 @@ export class AccountComponent implements OnInit {
     completed: false,
   };
 
-  
+  counter$: Observable<ICounter>;
+  count: number = 0;
 
-  constructor(private fireStore: FireStoreService) {}
+  constructor(private fireStore: FireStoreService, private store: Store<any>) {
+    this.counter$ = this.store.select('counter');
+  }
 
   ngOnInit(): void {
     console.log('account ngOnInit');
     this.loadData();
+    this.counter$.subscribe((counter) => {
+      console.log('[acc@counter]', this.counter$);
+      this.count = counter.count 
+    });
   }
 
   loadData() {
@@ -83,5 +93,15 @@ export class AccountComponent implements OnInit {
 
   ngOnDestroy(): void {
     console.log('account ngOnDestroy');
+  }
+
+  onIncrement(): void {
+    this.store.dispatch(increment())
+  }
+  onReset(): void {
+    this.store.dispatch(reset())
+  }
+  onDecrement(): void {
+    this.store.dispatch(decrement())
   }
 }

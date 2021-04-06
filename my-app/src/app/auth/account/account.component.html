@@ -50,50 +50,10 @@
   </div>
 </div>
 
-<!-- <div class="row mb-3">
-  <div class="col-6">
-   <img
-  src="https://images.unsplash.com/photo-1529926290624-b309403feeb6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-  class="img-fluid rounded-pill m-xl-3"
-  alt="BMW"
-/>
-  </div>
-  <div class="col-6">
-    <app-todo-form
-      [todo]="newTodo"
-      (onFormSubmit)="onSubmit($event)"
-      [isEditing]="isEditing"
-    ></app-todo-form>
-  </div>
-</div>
 
-<!-- <button class="btn btn-primary" (click)="onAddItem()">Add Item</button> -->
-<!-- 
-<div class="row">
-  <div class="col-6">
-    <ul *ngIf="list.length" class="list-group">
-      <li
-        *ngFor="let item of list"
-        class="d-flex justify-content-between"
-        [ngClass]="getClasses(item)"
-      >
-        {{ item.title }}
-
-        <div>
-          <button class="btn btn-warning" (click)="onTodoUpdate(item)">
-            <i class="fas fa-pencil-alt"></i>
-          </button>
-
-          <button
-            class="btn btn-danger"
-            (click)="onRemove(item.id)"
-            style="margin-left: 5px"
-          >
-            <i class="fas fa-trash fa-1x"></i>
-          </button>
-        </div>
-      </li>
-    </ul>
+<div class="col-8 text-info">
+    <h1>Counter = {{ count }}</h1>
+    <button class="btn btn-primary" (click)="onIncrement()">Increment</button>
+    <button class="btn btn-warning me-1 ms-1" (click)="onReset()">Reset</button>
+    <button class="btn btn-primary"(click)="onDecrement()">Decrement</button>
   </div>
-</div> -->
--->
