@@ -38,7 +38,7 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.email.setValue('superman@yopmail.com');
+   
   }
 
   validateEmail(): boolean {
