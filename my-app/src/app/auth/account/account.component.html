@@ -51,9 +51,10 @@
 </div>
 
 
-<div class="col-8 text-info">
-    <h1>Counter = {{ count }}</h1>
+  <div class="col-8 text-info ">
+    <h1>Counter = {{ (counter$ | async)?.count }}</h1>
     <button class="btn btn-primary" (click)="onIncrement()">Increment</button>
     <button class="btn btn-warning me-1 ms-1" (click)="onReset()">Reset</button>
     <button class="btn btn-primary"(click)="onDecrement()">Decrement</button>
   </div>
+

@@ -25,6 +25,7 @@ import { PublicModule } from './public/public.module';
 import { StoreModule } from '@ngrx/store';
 
 import { counterReducer } from './auth/account/state/counter.reducer';
+import { languageReducer } from './ngrx/state/language.reducer';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent, NavigationComponent],
@@ -42,6 +43,7 @@ import { counterReducer } from './auth/account/state/counter.reducer';
     StoreModule.forRoot(
       {
         counter: counterReducer,
+        app: languageReducer
       },
       {}
     ),

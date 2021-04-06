@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { reset, increment, decrement } from './state/counter.actions';
 import { ICounter } from './state/counter.interface';
 
+
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -22,7 +24,7 @@ export class AccountComponent implements OnInit {
   };
 
   counter$: Observable<ICounter>;
-  count: number = 0;
+
 
   constructor(private fireStore: FireStoreService, private store: Store<any>) {
     this.counter$ = this.store.select('counter');
@@ -31,9 +33,9 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     console.log('account ngOnInit');
     this.loadData();
-    this.counter$.subscribe((counter) => {
+    this.counter$.subscribe((counter: ICounter) => {
       console.log('[acc@counter]', this.counter$);
-      this.count = counter.count 
+      
     });
   }
 

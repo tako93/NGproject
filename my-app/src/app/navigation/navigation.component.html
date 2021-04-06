@@ -53,12 +53,21 @@
           ><strong>Sign Up</strong></a
         >
         </div>
+        <div class="navbar-nav">
+<!-- 
+             <button
+          class="btn"
+          *ngFor="let lang of langs"
+          (click)="onChangeLanguage(lang)"
+          [class.btn.dark]="lang === (activeLang$ | async)?.activeLang"
+        >
+          {{ lang }}
+        </button> -->
+        </div>
       </div>
     </div>
   </div>
 </nav>
 <br />
 
-<!-- this.fireAuthService.currentUser$.subscribe((user) => {
-     console.log(user)
-   }) -->
+

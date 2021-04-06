@@ -4,3 +4,6 @@ export interface ICounter {
     user?: object,
     error?: object | null
 }
+
+
+
