@@ -12,7 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NavigationComponent } from './navigation/navigation.component';
 
 import { BmwModule } from './bmw/bmw.module';
-import { UsersModule } from './users-api/users.module';
+import { UsersModule } from './users-api/shared/users.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 
@@ -26,6 +26,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { counterReducer } from './auth/account/state/counter.reducer';
 import { languageReducer } from './ngrx/state/language.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent, NavigationComponent],
@@ -62,6 +64,7 @@ import { languageReducer } from './ngrx/state/language.reducer';
         component: PageNotFoundComponent,
       },
     ]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     {
