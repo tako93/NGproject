@@ -22,7 +22,7 @@ export class BmwFormComponent implements OnInit {
       this._store.select(getCurrentCarSelector).subscribe((car) => {
         this.cars = car;
       })
-    }
+    } 
   }
 
 }
