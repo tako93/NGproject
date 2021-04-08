@@ -1,7 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 // import * as EventEmitter from 'node:events';
 import { Icars } from 'src/app/bmw/shared/cars';
+import { getCurrentCarSelector } from 'src/app/bmw/state/cars.selector';
 
 @Component({
   selector: 'app-bmw-form',
@@ -10,12 +12,17 @@ import { Icars } from 'src/app/bmw/shared/cars';
 })
 export class BmwFormComponent implements OnInit {
 
-  @Input() cars?: Icars;
+  cars?: Icars | null;
   @Input() isEditing: boolean = false;
   @Output() onFormSubmit = new EventEmitter();
-  constructor() { }
+  constructor(private _store: Store) { }
 
   ngOnInit(): void {
+    if (this.isEditing) {
+      this._store.select(getCurrentCarSelector).subscribe((car) => {
+        this.cars = car;
+      })
+    }
   }
 
 }

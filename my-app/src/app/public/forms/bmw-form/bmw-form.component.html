@@ -1,4 +1,8 @@
 <div class="text-white">
-    <p>bmw-form <span class="badge bg-danger">{{ isEditing ? 'editing' : "add" }}</span> works!</p>
+  <p>
+    bmw-form
+    <span class="badge bg-danger">{{ isEditing ? "editing" : "add" }}</span>
+    works!
+  </p>
+  <h3 *ngIf="cars">{{ cars.price }}</h3>
 </div>
-

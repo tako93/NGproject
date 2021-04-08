@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store'
+import { Icars } from '../shared/cars';
 
 @Component({
   selector: 'app-bmw-add',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BmwAddComponent implements OnInit {
 
-  constructor() { }
+  // editCar: Icars | null = null;
+  // constructor(private _store: Store) {
+  //   this._store.select(getCurrentCarSelector).subscribe(car => {
+  //      this.editCar = car
+  //    })
+  //  }
 
   ngOnInit(): void {
   }

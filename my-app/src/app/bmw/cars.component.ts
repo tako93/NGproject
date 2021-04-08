@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Icars } from './shared/cars';
 import { CarsService } from './shared/cars.service';
 import { Store } from '@ngrx/store';
-import { setCarAction } from './state/cars.actions';
+import { setCarAction, editCarAction } from './state/cars.actions';
 import { getCarSelector } from './state/cars.selector';
 
 @Component({
@@ -42,4 +42,13 @@ export class CarsComponent implements OnInit {
       this.filteredCars = this.carsList.slice();
     }
   }
+
+
+  onCarEdit(selectedCar: Icars): void {
+
+    this._store.dispatch(editCarAction({car: selectedCar}))
+    
+  }
+
+
 }

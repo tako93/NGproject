@@ -54,7 +54,7 @@
         <td>
           <strong>{{ item.year }}</strong>
         </td>
-        <a [routerLink]="['edit/', item.model]">
+        <a [routerLink]="['edit/', item.model]" (click)="onCarEdit(item)">
           <strong>{{ item.price }}</strong>
         </a>
       </tr>
