@@ -28,6 +28,9 @@ import { counterReducer } from './auth/account/state/counter.reducer';
 import { languageReducer } from './ngrx/state/language.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { AppState } from './ngrx/appState';
+
+
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent, NavigationComponent],
@@ -42,9 +45,11 @@ import { environment } from '../environments/environment';
     AuthModule,
     CoreModule,
     PublicModule,
-    StoreModule.forRoot(
+    
+    StoreModule.forRoot<AppState>(
       {
         counter: counterReducer,
+        // @ts-ignore
         app: languageReducer
       },
       {}
