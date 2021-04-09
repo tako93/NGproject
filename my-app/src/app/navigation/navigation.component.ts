@@ -14,14 +14,25 @@ import { changeLanguage } from '../ngrx/state/language.actions';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  // langs: Array<string> = [];
-  // activeLang$: Observable<ILanguage>;
+  langs: Array<string> = [];
+  activeLang$: Observable<ILanguage>;
+  translate: object = {
+    KA: {
+      title: 'მთვლელი'
+    },
+    EN: {
+      title: 'Counter'
+    },
+    FR: {
+      title: 'Counter'
+    }
+  }
   constructor(
     private authService: AuthService,
     public fireAuthService: FirebaseAuthService,
     private store: Store<any>
   ) {
-    // this.activeLang$ = this.store.select('app');
+    this.activeLang$ = this.store.select('app');
   }
 
   ngOnInit(): void {
@@ -29,7 +40,7 @@ export class NavigationComponent implements OnInit {
       this.validateToken();
     }
 
-    // this.langs = Object.keys(Languages).filter((l) => isNaN(Number(l)));
+    this.langs = Object.keys(Languages).filter((l) => isNaN(Number(l)));
   }
 
   private validateToken(): void {
@@ -56,7 +67,7 @@ export class NavigationComponent implements OnInit {
     this.notAuthorizedAction();
   }
 
-  // onChangeLanguage(newLang: string): void {
-  //   this.store.dispatch(changeLanguage({ newLang }));
-  // }
+  onChangeLanguage(newLang: string): void {
+    this.store.dispatch(changeLanguage({ newLang }));
+  }
 }

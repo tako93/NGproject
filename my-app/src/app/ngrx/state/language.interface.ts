@@ -1,5 +1,5 @@
 export interface ILanguage {
-   activeLang: Languages
+   activeLang: string
 }
 
 export enum Languages {

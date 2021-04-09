@@ -5,8 +5,7 @@ import { Todo, NewTodo } from '../shared/todo';
 import { Store } from '@ngrx/store';
 import { reset, increment, decrement } from './state/counter.actions';
 import { ICounter } from './state/counter.interface';
-
-
+import { ILanguage } from 'src/app/ngrx/state/language.interface';
 
 @Component({
   selector: 'app-account',
@@ -24,10 +23,28 @@ export class AccountComponent implements OnInit {
   };
 
   counter$: Observable<ICounter>;
-
-
+  lang$: Observable<ILanguage>
+  translate = {
+    KA: {
+      title: 'მთვლელი',
+      h3: 'შენი ექაუნთი'
+    },
+    EN: {
+      title: 'Counter',
+       h3: 'Your Account'
+    },
+    FR: {
+      title: 'Compteur',
+      h3: 'Votre compte'
+    },
+  };
+  translated = {
+    title: 'მთვლელი',
+    h3: 'შენი ექაუნთი'
+  }
   constructor(private fireStore: FireStoreService, private store: Store<any>) {
     this.counter$ = this.store.select('counter');
+    this.lang$ = this.store.select('app')
   }
 
   ngOnInit(): void {
@@ -35,8 +52,11 @@ export class AccountComponent implements OnInit {
     this.loadData();
     this.counter$.subscribe((counter: ICounter) => {
       console.log('[acc@counter]', this.counter$);
-      
     });
+    this.lang$.subscribe((lang) => {
+      //@ts-ignore
+      this.translated = this.translate[lang.activeLang];
+    })
   }
 
   loadData() {
@@ -98,12 +118,12 @@ export class AccountComponent implements OnInit {
   }
 
   onIncrement(): void {
-    this.store.dispatch(increment())
+    this.store.dispatch(increment());
   }
   onReset(): void {
-    this.store.dispatch(reset())
+    this.store.dispatch(reset());
   }
   onDecrement(): void {
-    this.store.dispatch(decrement())
+    this.store.dispatch(decrement());
   }
 }

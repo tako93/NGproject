@@ -1,11 +1,11 @@
 <div class="row text-white mt-0" *ngIf="!isEditing && todo">
   <div class="col-12 my-4">
-    <h5 class="text-muted">add new todo</h5>
+    <h5 class="text-muted">{{ translated.h5 }}</h5>
   </div>
   <div class="col-6 mx-auto">
     <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
       <div class="mb-3">
-        <label for="email" class="form-label">todo title</label>
+        <label for="email" class="form-label">{{ translated.todoTitle }}</label>
         <input
           type="text"
           class="form-control"
@@ -22,24 +22,28 @@
           name="completed"
           [(ngModel)]="todo.completed"
         />
-        <label class="form-check-label" for="completed">Completed</label>
+        <label class="form-check-label" for="completed">{{
+          translated.Completed
+        }}</label>
       </div>
 
-      <button type="submit" class="btn btn-primary">save todo</button>
+      <button type="submit" class="btn btn-primary">
+        {{ translated.saveTodo }}
+      </button>
     </form>
   </div>
 </div>
 
 <div class="row" *ngIf="isEditing && todo">
   <div class="col-12 my-4">
-    <h2 class="text-center text-muted">update todo</h2>
+    <h2 class="text-center text-muted">{{ translated.updateTodo }}</h2>
     <!-- {{ signInData | json }} -->
     <hr class="divider" />
   </div>
   <div class="col-6 mx-auto">
     <form #updateForm="ngForm" (ngSubmit)="onUpdate(updateForm)">
       <div class="mb-3">
-        <label for="email" class="form-label">todo title</label>
+        <label for="email" class="form-label">{{ translated.todoTitle }}</label>
         <input
           type="text"
           class="form-control"
@@ -56,10 +60,12 @@
           name="completed"
           [(ngModel)]="todo.completed"
         />
-        <label class="form-check-label" for="completed">Completed</label>
+        <label class="form-check-label" for="completed">{{
+          translated.Completed
+        }}</label>
       </div>
 
-      <button type="submit" class="btn btn-primary">update todo</button>
+      <button type="submit" class="btn btn-primary">{{ translated.updateTodo }}</button>
     </form>
   </div>
 </div>

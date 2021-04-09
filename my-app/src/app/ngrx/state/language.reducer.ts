@@ -5,7 +5,7 @@ import { changeLanguage } from './language.actions';
 import { ILanguage, Languages } from './language.interface';
 
 export const initialState = {
-  activeLang: 'ENG',
+  activeLang: 'EN',
 };
 
 const _reducer = createReducer(

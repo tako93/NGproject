@@ -19,55 +19,59 @@
         >
           <strong>BMW</strong></a
         >
-        <div class="navbar-nav" *ngIf="(fireAuthService.currentUser$ | async)?.uid">
+        <div
+          class="navbar-nav"
+          *ngIf="(fireAuthService.currentUser$ | async)?.uid"
+        >
           <a
-          class="nav-link text-danger"
-          [routerLink]="['/users']"
-          routerLinkActive="active"
-          ><strong>Users</strong></a
-        >
-        <a
-          class="nav-link text-danger"
-          [routerLink]="['auth/account']"
-          routerLinkActive="active"
-          ><strong>Account</strong></a
-        >
-       
-        <div class="navbar-nav ms-4">
-          <button class="btn btn-warning" (click)="onLogOut($event)">
-            Log Out
-          </button>
-        </div>
- </div>
-        <div class="navbar-nav"  *ngIf="!(fireAuthService.currentUser$ | async)?.uid">
+            class="nav-link text-danger"
+            [routerLink]="['/users']"
+            routerLinkActive="active"
+            ><strong>Users</strong></a
+          >
           <a
-          class="nav-link text-danger"
-          [routerLink]="['/auth/sign-in']"
-          routerLinkActive="active"
-          ><strong>Sign In</strong></a
-        >
-        <a
-          class="nav-link text-danger"
-          [routerLink]="['/auth/sign-up']"
-          routerLinkActive="active"
-          ><strong>Sign Up</strong></a
-        >
+            class="nav-link text-danger"
+            [routerLink]="['auth/account']"
+            routerLinkActive="active"
+            ><strong>Account</strong></a
+          >
+
+          <div class="navbar-nav ms-4">
+            <button class="btn btn-warning" (click)="onLogOut($event)">
+              Log Out
+            </button>
+          </div>
         </div>
-        <div class="navbar-nav">
-<!-- 
-             <button
-          class="btn"
-          *ngFor="let lang of langs"
-          (click)="onChangeLanguage(lang)"
-          [class.btn.dark]="lang === (activeLang$ | async)?.activeLang"
+        <div
+          class="navbar-nav"
+          *ngIf="!(fireAuthService.currentUser$ | async)?.uid"
         >
-          {{ lang }}
-        </button> -->
+          <a
+            class="nav-link text-danger"
+            [routerLink]="['/auth/sign-in']"
+            routerLinkActive="active"
+            ><strong>Sign In</strong></a
+          >
+          <a
+            class="nav-link text-danger"
+            [routerLink]="['/auth/sign-up']"
+            routerLinkActive="active"
+            ><strong>Sign Up</strong></a
+          >
         </div>
       </div>
     </div>
   </div>
+  <div class="navbar-nav btn-sm">
+    <button
+      class="btn text-danger btn-sm"
+      *ngFor="let lang of langs"
+      (click)="onChangeLanguage(lang)"
+      [class.btn-dark]="lang === (activeLang$ | async)?.activeLang"
+    >
+      {{ lang }}
+    </button>
+  </div>
 </nav>
+
 <br />
-
-
