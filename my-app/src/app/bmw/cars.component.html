@@ -5,7 +5,7 @@
     alt="BMW"
   />
   <div class="starter-text">
-    <h3 class="text-muted">10 best used BMW models in 2021</h3>
+    <h3 class="text-muted">{{ translated.h3 }}</h3>
   </div>
 </div>
 <br />
@@ -17,15 +17,15 @@
       type="search"
       class="form-control btn-danger"
       [(ngModel)]="filterValue"
-      placeholder="enter model name"
+      placeholder="{{ translated.placeholder }}"
     />
     <div class="col-6 text-danger">
-      <span> Model Name</span>: <b>{{ filterValue }}</b>
+      <span>{{ translated.ModelName }}</span>: <b>{{ filterValue }}</b>
     </div>
   </div>
   <div class="row mb-4">
     <div class="col-4">
-      <a class="btn btn-danger" [routerLink]="['add']">Add New Model</a>
+      <a class="btn btn-danger" [routerLink]="['add']">{{ translated.AddNewModel }}</a>
     </div>
   </div>
 </div>

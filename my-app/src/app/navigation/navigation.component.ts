@@ -16,17 +16,7 @@ import { changeLanguage } from '../ngrx/state/language.actions';
 export class NavigationComponent implements OnInit {
   langs: Array<string> = [];
   activeLang$: Observable<ILanguage>;
-  translate: object = {
-    KA: {
-      title: 'მთვლელი'
-    },
-    EN: {
-      title: 'Counter'
-    },
-    FR: {
-      title: 'Counter'
-    }
-  }
+ 
   constructor(
     private authService: AuthService,
     public fireAuthService: FirebaseAuthService,
